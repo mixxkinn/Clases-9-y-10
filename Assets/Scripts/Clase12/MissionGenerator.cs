@@ -27,7 +27,7 @@ public class MissionGenerator : MonoBehaviour
             Debug.Log($"Tipo: {r.missionType} | Peso: {r.weight} | Dificultad: [{r.minDifficulty}-{r.maxDifficulty}]");
 
         Debug.Log("=== PARTE 2 y 3: Generación de misiones ===");
-        int[] dificultades = { 1, 3, 5 };
+        int[] dificultades = { 1, 2, 5 };
         foreach (int d in dificultades)
         {
             string mision = GenerateMission(d, currentContext);
