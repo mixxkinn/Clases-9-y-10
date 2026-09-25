@@ -125,13 +125,13 @@ public class LevelGenerator : MonoBehaviour
         return dist;
     }
 
-    // MEJORA: recompensas de mayor valor cuanto mas lejos del spawn (BFS = dificultad progresiva)
+    // MEJORA: Colocar las reconpenzas lo mas lejos posible para umnentar la dificultad
     void PlaceRewards(Dictionary<Vector2Int, int> dist)
     {
         var placed = new List<Vector2Int>();
         int maxRewards = Mathf.RoundToInt(dist.Count * rewardDensity);
         var candidates = new List<Vector2Int>(dist.Keys);
-        candidates.Sort((a, b) => dist[b].CompareTo(dist[a])); // lejanos primero = recompensas de mayor valor
+        candidates.Sort((a, b) => dist[b].CompareTo(dist[a])); // comenzar desde el punto mas lejano
         foreach (var c in candidates)
         {
             if (placed.Count >= maxRewards) break;
