@@ -69,8 +69,7 @@ public class MissionGenerator : MonoBehaviour
             return "Ninguna";
         }
 
-        // Corrección del error del punto 4: el acumulador debe ser local (no estático)
-        // para que se reinicie en cada llamada a la función.
+        // Corrección del error del punto 4: creamos un aomulador local para no utilizar el estatico para que se reinicie cada que se llame la funcion
         float pesoTotal = 0f;
         foreach (var r in validas) pesoTotal += r.weight;
 
