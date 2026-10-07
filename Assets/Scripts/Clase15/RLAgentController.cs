@@ -52,7 +52,11 @@ public class RLAgentController : Agent
         AddReward(-distance * 0.001f); // premia acercarse al objetivo
 
         // MEJORA: penalizacion por paso para incentivar rutas mas cortas
-        AddReward(-1f / MaxStep);
+        //El cambio fue meterlo dentro de un IF para evitar dividir entre 0
+        if (MaxStep > 0)
+        {
+            AddReward(-1f / MaxStep);
+        }
 
         elapsedTime += Time.deltaTime;
 
