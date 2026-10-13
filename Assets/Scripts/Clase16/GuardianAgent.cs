@@ -50,7 +50,7 @@ public class GuardianAgent : Agent
 
         if (distanciaActual < 1.0f)
         {
-            AddReward(1.0f);
+            AddReward(5.0f);
             EndEpisode();
         }
 
@@ -73,5 +73,19 @@ public class GuardianAgent : Agent
             Debug.Log("PENALIZACION APLICADA: el agente cruzo la zona restringida");
             EndEpisode();
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (restrictedZoneCenter == null) return;
+
+        // 1. Dibuja la zona restringida (radio de colisión) en ROJO
+        Gizmos.color = new Color(1f, 0f, 0f, 0.4f);
+        Gizmos.DrawSphere(restrictedZoneCenter.position, restrictedZoneRadius);
+
+        // 2. Dibuja el radio de alerta (donde empieza la aversión) en AMARILLO
+        Gizmos.color = new Color(1f, 0.92f, 0.01f, 0.2f);
+        float radioAlerta = restrictedZoneRadius * 1.5f;
+        Gizmos.DrawSphere(restrictedZoneCenter.position, radioAlerta);
     }
 }
